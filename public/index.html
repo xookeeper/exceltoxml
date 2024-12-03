@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel to XML Converter</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ccffcc;
+    }
+    header {
+      background-color: #001a00;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #00cc00;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 10px 20px;
+      background-color: #001a00;
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    form, .actions {
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #001a00;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    input[type="file"] {
+      padding: 10px;
+      margin-right: 10px;
+    }
+    #columns div {
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #333;
+    }
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+      <img src="images/logo.png" alt="Trikya Tech" />
+    </div>
+    <h1>Excel to XML Converter</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Convert Your Excel Data to XML Format</h1>
+    <p>Upload your Excel file and customize your XML export by selecting the desired columns.</p>
+
+    <!-- File Upload Section -->
+    <form id="uploadForm" enctype="multipart/form-data">
+        <!-- File Upload Section -->
+        <!-- <button type = "file" id="fileInput">Choose file</button> -->
+        <input type="file" id="fileInput" name="file" accept=".xlsx, .xls" required ></input>
+        <button type="submit">Upload</button>
+      </form>
+      
+
+    <!-- Column Selection Section -->
+    <div id="columnSection" style="display: none;">
+      <h2>Select Columns</h2>
+      <button id="selectAll">Select All</button>
+      <div id="columns"></div>
+      <button id="convert">Convert to XML</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Excel to XML Converter. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const uploadForm = document.getElementById('uploadForm');
+    const fileInput = document.getElementById('fileInput');
+    const columnSection = document.getElementById('columnSection');
+    const columnsDiv = document.getElementById('columns');
+    const selectAllButton = document.getElementById('selectAll');
+    const convertButton = document.getElementById('convert');
+    let availableHeaders = []; // To store fetched headers
+    let uploadedData = []; // To store the uploaded data
+
+    // Handle File Upload
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+
+        if (response.ok) {
+          availableHeaders = result.headers; // Save headers for column selection
+          uploadedData = result.data; // Save the entire uploaded data
+          renderColumns(availableHeaders);
+          columnSection.style.display = 'block';
+        } else {
+          alert(result.message || 'Error uploading file');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while uploading the file.');
+      }
+    });
+
+    // Render Checkboxes for Columns
+    function renderColumns(headers) {
+      columnsDiv.innerHTML = ''; // Clear existing checkboxes
+      headers.forEach((header) => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = header;
+        checkbox.id = header;
+        columnsDiv.appendChild(checkbox);
+
+        const label = document.createElement('label');
+        label.htmlFor = header;
+        label.textContent = header;
+        columnsDiv.appendChild(label);
+
+        columnsDiv.appendChild(document.createElement('br'));
+      });
+    }
+
+    // Select All Columns
+    selectAllButton.addEventListener('click', () => {
+      const checkboxes = columnsDiv.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach((checkbox) => (checkbox.checked = true));
+    });
+
+    // Handle Conversion to XML
+    convertButton.addEventListener('click', async () => {
+      const selectedColumns = Array.from(
+        columnsDiv.querySelectorAll('input[type="checkbox"]:checked')
+      ).map((checkbox) => checkbox.value);
+
+      if (selectedColumns.length === 0) {
+        alert('Please select at least one column.');
+        return;
+      }
+
+      try {
+        const response = await fetch('/convert', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: uploadedData, selectedColumns }),
+        });
+
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'converted.xml';
+          a.click();
+          window.URL.revokeObjectURL(url);
+        } else {
+          const result = await response.json();
+          alert(result.message || 'Error converting to XML');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during conversion.');
+      }
+    });
+  </script>
+</body>
+</html>
