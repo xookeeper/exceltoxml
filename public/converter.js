@@ -77,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
 <VOUCHERTYPENAME>${isWithdrawal ? 'Payment' : 'Receipt'}</VOUCHERTYPENAME>
 <VOUCHERNUMBER>${voucherNumber}</VOUCHERNUMBER>
 <ALLLEDGERENTRIES.LIST>
-<LEDGERNAME>${bankAccountName}</LEDGERNAME>
+<LEDGERNAME>${isWithdrawal ? account : bankAccountName}</LEDGERNAME>
 <ISDEEMEDPOSITIVE>${isWithdrawal ? 'Yes' : 'No'}</ISDEEMEDPOSITIVE>
 <AMOUNT>${isWithdrawal ? `-${amount}` : amount}</AMOUNT>
 </ALLLEDGERENTRIES.LIST>
 <ALLLEDGERENTRIES.LIST>
-<LEDGERNAME>${bankAccountName}</LEDGERNAME>
+<LEDGERNAME>${isWithdrawal ? account : bankAccountName}</LEDGERNAME>
 <ISDEEMEDPOSITIVE>${isWithdrawal ? 'No' : 'Yes'}</ISDEEMEDPOSITIVE>
 <AMOUNT>${isWithdrawal ? amount : `-${amount}`}</AMOUNT>
 </ALLLEDGERENTRIES.LIST>
