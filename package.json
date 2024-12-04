@@ -2,10 +2,11 @@
   "name": "trikaytech",
   "version": "1.0.0",
   "main": " src/server.js ",
-  "homepage": "https://github.com/xookeeper/exceltoxml",
+  "homepage": "https://xookeeper.github.io/exceltoxml/",
 "scripts": {
-  "deploy": "gh-pages -d ."
+  "deploy": "gh-pages -d src/server.js"
 },
+
 
   "keywords": [],
   "author": "",
