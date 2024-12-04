@@ -4,10 +4,9 @@
   "main": " src/server.js ",
   "homepage": "https://xookeeper.github.io/exceltoxml/",
 "scripts": {
+  "predeploy": "npm run build",
   "deploy": "gh-pages -d public"
 },
-
-
   "keywords": [],
   "author": "",
   "license": "ISC",
