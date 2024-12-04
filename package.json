@@ -1,12 +1,12 @@
 {
   "name": "trikaytech",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": " src/server.js ",
   "homepage": "https://github.com/xookeeper/exceltoxml",
 "scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+  "deploy": "gh-pages -d ."
 },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
