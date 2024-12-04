@@ -6,7 +6,7 @@
 "scripts": {
   "build": "echo 'Building project...' && rm -rf build && mkdir -p build && cp -r public/* build/",
   "predeploy": "npm run build",
-  "deploy": "gh-pages -d public"
+  "deploy": "gh-pages -d build"
 },
   "keywords": [],
   "author": "",
