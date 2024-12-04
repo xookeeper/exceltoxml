@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Statement Utility</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script defer src="scripts/converter.js"></script>
+</head>
+<body>
+  <header class="sticky-header">
+    <div class="container">
+      <h1 class="company-name">Sanjay Kuthe and Co</h1>
+      <nav>
+        <ul class="nav-links">
+          <a href="index.html#about">About Us</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#contact">Contact Us</a>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Excel to XML Converter</h2>
+    <p>Convert your bank statements into XML format effortlessly. Follow these steps for a seamless experience:</p>
+
+    <ol class="instructions">
+      <li>Download the <a href="inputs/IMPORT TEMPLATE_Bank Statement.xlsx" download>sample Excel file</a>.</li>
+      <li>Fill in the required details in the file.</li>
+      <li>Upload the completed Excel file using the "Choose File" button below.</li>
+      <li>Click the "Process" button to generate the XML file.</li>
+    </ol>
+
+    <div class="actions">
+        <a href="inputs/IMPORT TEMPLATE_Bank Statement.xlsx" download class="button">Download Sample File</a>
+        
+        <!-- File input and styled label -->
+        <div class="file-input-container">
+          <input type="file" id="fileInput" accept=".xlsx, .xls" class="file-input">
+          <span id="fileName" calss = "file-span">No file chosen</span>
+        </div>
+        
+        <button id="processButton" class="button">Process</button>
+      </div>
+      
+      
+      
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Sanjay Kuthe and Co. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="converter.js"></script>
+
+</body>
+</html>

@@ -3,221 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel to XML Converter</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ccffcc;
-    }
-    header {
-      background-color: #001a00;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header img {
-      height: 50px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      background: #00cc00;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-      text-align: center;
-      padding: 10px 20px;
-      background-color: #001a00;
-      color: white;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    form, .actions {
-      margin-bottom: 20px;
-    }
-    button {
-      background-color: #001a00;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    input[type="file"] {
-      padding: 10px;
-      margin-right: 10px;
-    }
-    #columns div {
-      margin-bottom: 10px;
-    }
-    h2 {
-      color: #333;
-    }
-    .footer-links a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Sanjay Kuthe and Co - Your Financial Partner</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div>
-      <img src="images/logo.png" alt="Trikya Tech" />
+  <!-- Sticky Header -->
+  <header class="sticky-header">
+    <div class="container header-container">
+      <h1 class="company-name">Sanjay Kuthe and Co</h1>
+      <nav>
+        <ul class="nav-links">
+          <a href="#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact Us</a>
+        </ul>
+      </nav>
     </div>
-    <h1>Excel to XML Converter</h1>
   </header>
 
   <!-- Main Content -->
   <main>
-    <h1>Convert Your Excel Data to XML Format</h1>
-    <p>Upload your Excel file and customize your XML export by selecting the desired columns.</p>
+    <!-- About Us Section -->
+    <section id="about" class="section section-about">
+      <div class="container">
+        <div class="card">
+          <h2>About Us</h2>
+          <p>
+            We are dedicated to delivering the highest standards of financial and accounting services.
+            With years of experience and a team of expert professionals, we aim to simplify your financial journey
+            and help you achieve your goals efficiently and effectively.
+          </p>
+          <p>
+            Our mission is to provide tailored solutions that align with your unique needs, ensuring compliance,
+            transparency, and growth.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- File Upload Section -->
-    <form id="uploadForm" enctype="multipart/form-data">
-        <!-- File Upload Section -->
-        <!-- <button type = "file" id="fileInput">Choose file</button> -->
-        <input type="file" id="fileInput" name="file" accept=".xlsx, .xls" required ></input>
-        <button type="submit">Upload</button>
-      </form>
-      
+    <!-- Services Section -->
+    <section id="services" class="section section-services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Income Tax Filing</h3>
+            <p>Seamless tax filing and advisory services for individuals and businesses.</p>
+          </div>
+          <div class="service-card">
+            <h3>GST Compliance</h3>
+            <p>End-to-end GST registration, filing, and compliance management.</p>
+          </div>
+          <div class="service-card">
+            <h3>Audit and Assurance</h3>
+            <p>Comprehensive audits to ensure financial accuracy and compliance.</p>
+          </div>
+          <div class="service-card">
+            <h3><a href="converter.html">Excel to XML Conversion</a></h3>
+            <p>Streamline your processes with our Excel-to-XML conversion tool.</p>
+          </div>
+          <div class="service-card">
+            <h3>Startup Support</h3>
+            <p>From registration to compliance, we guide your startup journey.</p>
+          </div>
+          <div class="service-card">
+            <h3>Wealth Management</h3>
+            <p>Comprehensive financial planning and portfolio management services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Column Selection Section -->
-    <div id="columnSection" style="display: none;">
-      <h2>Select Columns</h2>
-      <button id="selectAll">Select All</button>
-      <div id="columns"></div>
-      <button id="convert">Convert to XML</button>
-    </div>
+    <!-- Contact Us Section -->
+    <section id="contact" class="section section-contact">
+      <div class="container">
+        <div class="card">
+          <h2>Contact Us</h2>
+          <p>We’d love to hear from you! Get in touch for personalized financial solutions.</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:info@abccafirm.com">info@abccafirm.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919876543210">+91-98765-43210</a></p>
+            <p><strong>Address:</strong> 123 Business Park, Corporate City, India</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Excel to XML Converter. All Rights Reserved.</p>
-    <div class="footer-links">
-      <a href="#">About Us</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
+    <div class="container">
+      <p>&copy; 2024 Sanjay Kuthe and Co. All Rights Reserved.</p>
     </div>
   </footer>
 
   <script>
-    const uploadForm = document.getElementById('uploadForm');
-    const fileInput = document.getElementById('fileInput');
-    const columnSection = document.getElementById('columnSection');
-    const columnsDiv = document.getElementById('columns');
-    const selectAllButton = document.getElementById('selectAll');
-    const convertButton = document.getElementById('convert');
-    let availableHeaders = []; // To store fetched headers
-    let uploadedData = []; // To store the uploaded data
-
-    // Handle File Upload
-    uploadForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('file', fileInput.files[0]);
-
-      try {
-        const response = await fetch('/upload', {
-          method: 'POST',
-          body: formData,
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+          behavior: 'smooth'
         });
-        const result = await response.json();
-
-        if (response.ok) {
-          availableHeaders = result.headers; // Save headers for column selection
-          uploadedData = result.data; // Save the entire uploaded data
-          renderColumns(availableHeaders);
-          columnSection.style.display = 'block';
-        } else {
-          alert(result.message || 'Error uploading file');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while uploading the file.');
-      }
-    });
-
-    // Render Checkboxes for Columns
-    function renderColumns(headers) {
-      columnsDiv.innerHTML = ''; // Clear existing checkboxes
-      headers.forEach((header) => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = header;
-        checkbox.id = header;
-        columnsDiv.appendChild(checkbox);
-
-        const label = document.createElement('label');
-        label.htmlFor = header;
-        label.textContent = header;
-        columnsDiv.appendChild(label);
-
-        columnsDiv.appendChild(document.createElement('br'));
       });
-    }
-
-    // Select All Columns
-    selectAllButton.addEventListener('click', () => {
-      const checkboxes = columnsDiv.querySelectorAll('input[type="checkbox"]');
-      checkboxes.forEach((checkbox) => (checkbox.checked = true));
-    });
-
-    // Handle Conversion to XML
-    convertButton.addEventListener('click', async () => {
-      const selectedColumns = Array.from(
-        columnsDiv.querySelectorAll('input[type="checkbox"]:checked')
-      ).map((checkbox) => checkbox.value);
-
-      if (selectedColumns.length === 0) {
-        alert('Please select at least one column.');
-        return;
-      }
-
-      try {
-        const response = await fetch('/convert', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: uploadedData, selectedColumns }),
-        });
-
-        if (response.ok) {
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'converted.xml';
-          a.click();
-          window.URL.revokeObjectURL(url);
-        } else {
-          const result = await response.json();
-          alert(result.message || 'Error converting to XML');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred during conversion.');
-      }
     });
   </script>
 </body>
