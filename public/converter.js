@@ -100,7 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'ConvertedFile.xml';
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    a.download = `${bankAccountName}_${timestamp}.xml`;
     a.click();
     window.URL.revokeObjectURL(url);
   });
