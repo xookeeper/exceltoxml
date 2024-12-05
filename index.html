@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanjay Kuthe and Co - Your Financial Partner</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-right: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      background-color: green;
+      border-radius: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: green;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      display: block;
+      text-decoration: none;
+      color: white;
+      padding: 8px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #004d00;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown .dropbtn {
+      background-color: green;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .card {
+      background-color: #e6ffe6;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card {
+      background-color: #e6ffe6;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h2, h3 {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Header -->
+  <header class="sticky-header">
+    <div class="container header-container">
+      <h1 class="company-name">Sanjay Kuthe and Co</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact Us</a></li> 
+          <li class="dropdown">
+            <a href="#tools" class="dropbtn">Tools</a>
+            <div class="dropdown-content">
+              <a href="http://192.168.0.108:3000/converter.html">Bank Statement Utility</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Us Section -->
+    <section id="about" class="section section-about">
+      <div class="container">
+        <h2>About Us</h2>
+        <div class="card">
+          <p>
+            We are dedicated to delivering the highest standards of financial and accounting services.
+            With years of experience and a team of expert professionals, we aim to simplify your financial journey
+            and help you achieve your goals efficiently and effectively.
+          </p>
+          <p>
+            Our mission is to provide tailored solutions that align with your unique needs, ensuring compliance,
+            transparency, and growth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section section-services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Income Tax Filing</h3>
+            <p>Seamless tax filing and advisory services for individuals and businesses.</p>
+          </div>
+          <div class="service-card">
+            <h3>GST Compliance</h3>
+            <p>End-to-end GST registration, filing, and compliance management.</p>
+          </div>
+          <div class="service-card">
+            <h3>Audit and Assurance</h3>
+            <p>Comprehensive audits to ensure financial accuracy and compliance.</p>
+          </div>
+          <div class="service-card">
+            <h3><a href="converter.html">Bank Statement Utility</a></h3>
+            <p>Streamline your processes with our Excel-to-XML conversion tool.</p>
+          </div>
+          <div class="service-card">
+            <h3>Startup Support</h3>
+            <p>From registration to compliance, we guide your startup journey.</p>
+          </div>
+          <div class="service-card">
+            <h3>Wealth Management</h3>
+            <p>Comprehensive financial planning and portfolio management services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section section-contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <div class="card">
+          <p>We’d love to hear from you! Get in touch for personalized financial solutions.</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:info@cafirm.com">info@mymail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919876543210">+91-98765-43210</a></p>
+            <p><strong>Address:</strong> Nagpur, India</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Sanjay Kuthe and Co. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (!href.startsWith('http')) {
+      // For local links, ensure it works correctly
+      window.location.href = href;
+    }
+  });
+});
+
+  </script>
+  
+</body>
+</html>
