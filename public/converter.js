@@ -30,6 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log("Sheet data loaded:", sheetData);
           bankAccountName = sheetData[1]?.[2]?.toString().trim() || 'Unknown';
           uploadedData = sheetData.slice(3).filter((row) => row.some((cell) => cell !== null && cell !== undefined));
+
+          // Validate for '&' character
+          for (let row of uploadedData) {
+            for (let cell of row) {
+              if (typeof cell === 'string' && cell.includes('&')) {
+                alert("Invalid file: contains '&' character. Please remove it and try again.");
+                return;
+              }
+            }
+          }          
   
           alert(`File successfully uploaded! Bank Account Name: ${bankAccountName}`);
         } catch (error) {
