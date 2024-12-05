@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const account = row[4] || '';
       const withdrawal = row[5];
       const receipt = row[6];
-      const isWithdrawal = withdrawal && !isNaN(parseFloat(withdrawal));
+      const isWithdrawal = withdrawal && !isNaN(parseFloat(withdrawal)); // withdrawl of customer account not  the bank account
       const amount = parseFloat(isWithdrawal ? withdrawal : receipt).toFixed(2);
 
       xmlContent += `
@@ -77,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
 <VOUCHERTYPENAME>${isWithdrawal ? 'Payment' : 'Receipt'}</VOUCHERTYPENAME>
 <VOUCHERNUMBER>${voucherNumber}</VOUCHERNUMBER>
 <ALLLEDGERENTRIES.LIST>
-<LEDGERNAME>${isWithdrawal ? account : bankAccountName}</LEDGERNAME>
+<LEDGERNAME>${account}</LEDGERNAME>
 <ISDEEMEDPOSITIVE>${isWithdrawal ? 'Yes' : 'No'}</ISDEEMEDPOSITIVE>
 <AMOUNT>${isWithdrawal ? `-${amount}` : amount}</AMOUNT>
 </ALLLEDGERENTRIES.LIST>
 <ALLLEDGERENTRIES.LIST>
-<LEDGERNAME>${isWithdrawal ? account : bankAccountName}</LEDGERNAME>
+<LEDGERNAME>${bankAccountName}</LEDGERNAME>
 <ISDEEMEDPOSITIVE>${isWithdrawal ? 'No' : 'Yes'}</ISDEEMEDPOSITIVE>
 <AMOUNT>${isWithdrawal ? amount : `-${amount}`}</AMOUNT>
 </ALLLEDGERENTRIES.LIST>
