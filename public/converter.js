@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
   
-      console.log("File selected:", file.name);
       fileNameSpan.textContent = file.name;
   
       const reader = new FileReader();
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const sheetName = workbook.SheetNames[0];
           const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
   
-          console.log("Sheet data loaded:", sheetData);
           bankAccountName = sheetData[1]?.[2]?.toString().trim() || 'Unknown';
           uploadedData = sheetData.slice(3).filter((row) => row.some((cell) => cell !== null && cell !== undefined));
 

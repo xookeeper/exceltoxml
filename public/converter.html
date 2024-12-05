@@ -26,6 +26,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
 
     .nav-links {
@@ -133,6 +135,20 @@
     .file-input-container input:focus + #fileName {
       border: 1px solid red;
     }
+
+    .card {
+      background-color: #e6ffe6;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    h2, h3 {
+      color: green;
+    }
   </style>
 </head>
 <body>
@@ -156,28 +172,30 @@
   </header>
 
   <main>
-    <h2>Bank Statement Utility</h2>
-    <p>Convert your bank statements into XML format effortlessly. Follow these steps for a seamless experience:</p>
+    <div class="card">
+      <h2>Excel to XML Converter</h2>
+      <p>Convert your bank statements into XML format effortlessly. Follow these steps for a seamless experience:</p>
 
-    <ol class="instructions">
-      <li>Download the <a href="inputs/IMPORT TEMPLATE_Bank Statement.xlsx" download>sample Excel file</a>.</li>
-      <li>Fill in the required details in the file.</li>
-      <li>Upload the completed Excel file using the "Choose File" button below.</li>
-      <li>Click the "Process" button to generate the XML file.</li>
-    </ol>
+      <ol class="instructions">
+        <li>Download the <a href="inputs/IMPORT TEMPLATE_Bank Statement.xlsx" download>sample Excel file</a>.</li>
+        <li>Fill in the required details in the file.</li>
+        <li>Upload the completed Excel file using the "Choose File" button below.</li>
+        <li>Click the "Process" button to generate the XML file.</li>
+      </ol>
 
-    <div class="actions">
-        <a href="inputs/IMPORT TEMPLATE_Bank Statement.xlsx" download class="button">Download Sample File</a>
-        
-        <!-- File input and styled label -->
-        <div class="file-input-container">
-          <label for="fileInput" class="file-input-label">Choose File</label>
-          <input type="file" id="fileInput" accept=".xlsx, .xls" class="file-input">
-          <span id="fileName">No file chosen</span>
+      <div class="actions">
+          <a href="inputs/IMPORT TEMPLATE_Bank Statement.xlsx" download class="button">Download Sample File</a>
+          
+          <!-- File input and styled label -->
+          <div class="file-input-container">
+            <label for="fileInput" class="file-input-label">Choose File</label>
+            <input type="file" id="fileInput" accept=".xlsx, .xls" class="file-input">
+            <span id="fileName">No file chosen</span>
+          </div>
+          
+          <button id="processButton" class="button">Process</button>
         </div>
-        
-        <button id="processButton" class="button">Process</button>
-      </div>
+    </div>
   </main>
 
   <footer>
