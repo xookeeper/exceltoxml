@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <!-- Load Firebase SDKs from CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h1>Welcome to the Protected Page</h1>
+  <p id="welcomeMessage">You are successfully logged in!</p>
+  <button id="logoutBtn">Logout</button>
+
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCheTKSioQvT0uemYqxCYr1hJxG8yDisCU",
+      authDomain: "general-login-b4932.firebaseapp.com",
+      projectId: "general-login-b4932",
+      storageBucket: "general-login-b4932.firebasestorage.app",
+      messagingSenderId: "503291448237",
+      appId: "1:503291448237:web:557d012d3a614860a46f24",
+      measurementId: "G-573SKVP492"
+    };
+
+    // Initialize Firebase App
+    firebase.initializeApp(firebaseConfig);
+
+    // Check if the user is logged in and fetch user details
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        alert('Access denied! Please login.');
+        window.location.href = 'index.html'; // Redirect to login page
+      } else {
+        // Display personalized welcome message
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const userName = user.displayName || user.email || "User"; // Use displayName if available, otherwise email
+        welcomeMessage.textContent = `Welcome, ${userName}!`;
+      }
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        alert('Logged out successfully!');
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
