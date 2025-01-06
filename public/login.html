@@ -15,12 +15,6 @@
   </style>
 </head>
 <body>
-  <h2>Firebase Authentication</h2>
-
-  <h3>Register</h3>
-  <input type="email" id="registerEmail" placeholder="Email" required />
-  <input type="password" id="registerPassword" placeholder="Password" required />
-  <button id="registerBtn">Register</button>
 
   <h3>Login</h3>
   <input type="email" id="loginEmail" placeholder="Email" required />
@@ -42,15 +36,6 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    // Register User
-    document.getElementById('registerBtn').addEventListener('click', () => {
-      const email = document.getElementById('registerEmail').value;
-      const password = document.getElementById('registerPassword').value;
-
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(() => alert('Registration Successful!'))
-        .catch((error) => alert(error.message));
-    });
 
     // Login User
     document.getElementById('loginBtn').addEventListener('click', () => {
