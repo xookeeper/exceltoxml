@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Login</title>
+  <!-- Correct Firebase SDK Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: auto; padding: 20px; }
+    input, button { display: block; width: 100%; margin: 10px 0; padding: 10px; }
+    button { background-color: green; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: darkgreen; }
+  </style>
+</head>
+<body>
+
+  <h3>Login</h3>
+  <input type="email" id="loginEmail" placeholder="Email" required />
+  <input type="password" id="loginPassword" placeholder="Password" required />
+  <button id="loginBtn">Login</button>
+
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCheTKSioQvT0uemYqxCYr1hJxG8yDisCU",
+        authDomain: "general-login-b4932.firebaseapp.com",
+        projectId: "general-login-b4932",
+        storageBucket: "general-login-b4932.firebasestorage.app",
+        messagingSenderId: "503291448237",
+        appId: "1:503291448237:web:557d012d3a614860a46f24",
+        measurementId: "G-573SKVP492"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
+    // Login User
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert('Login Successful!');
+          window.location.href = 'converter.html';
+        })
+        .catch((error) => alert(error.message));
+    });
+  </script>
+</body>
+</html>
