@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let bankAccountName = '';
 // deploy
   // Check if fileInput and fileNameSpan exist before adding event listener
+  // deploy
   if (fileInput && fileNameSpan) {
     // Handle file selection
     fileInput.addEventListener('change', (event) => {
