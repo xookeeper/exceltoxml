@@ -2,9 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('../routes/userRoutes')
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const port = 3001;
+
+app.use(cors({ origin: 'http://localhost:3001' }));
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());

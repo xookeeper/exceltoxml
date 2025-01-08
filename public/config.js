@@ -1,5 +1,5 @@
 const config = {
-    serverUrl: 'http://ec2-184-73-91-63.compute-1.amazonaws.com:3001'
+    serverUrl: 'http://127.0.0.1:3001'
   };
   
-  export default config;
+  export default config;  
