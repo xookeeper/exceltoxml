@@ -10,6 +10,7 @@ const port = 3001;
 app.use(cors({ origin: 'http://localhost:3001' }));
 
 // Middleware to parse JSON bodies
+// deploy
 app.use(bodyParser.json());
 
 // Serve static files from the "public" directory
